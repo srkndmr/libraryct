@@ -1,5 +1,6 @@
 package com.libraryct.pages;
 
+import com.libraryct.utilities.BrowserUtils;
 import com.libraryct.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,13 +20,24 @@ public class LoginPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement submit;
 
+    @FindBy (xpath = "//img[@id='user_avatar']")
+    public WebElement user;
 
-    public void login(String userNameStr, String passwordStr) {
-        userName.sendKeys(userNameStr);
-        passWord.sendKeys(passwordStr);
+    @FindBy(xpath = "//a[@class='dropdown-item']")
+    public WebElement logout;
+
+
+    public void login(String username, String password) {
+        userName.sendKeys(username);
+        BrowserUtils.waitFor(1);
+        passWord.sendKeys(password);
         submit.click();
+        BrowserUtils.waitFor(1);
         // verification that we logged
     }
 
-
+    public void logout(){
+        user.click();
+        logout.click();
+    }
 }

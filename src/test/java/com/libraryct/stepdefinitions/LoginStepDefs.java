@@ -7,40 +7,51 @@ import com.libraryct.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
 public class LoginStepDefs {
-    @When("the user logs in as {String}")
-    public void the_user_logs_in_as(String role) {
+    @Given("user is on the login page")
+    public void user_is_on_the_login_page() {
         Driver.get().get(ConfigurationReader.get("url"));
-        //based on input enter that user information
-        String username =null;
-        String password =null;
+    }
 
-        if(role.equals("student")){
+    @When("{string} enters valid credentials")
+    public void enters_valid_credentials(String user) {
+        String username = null;
+        String password = null;
+
+       if(user.equals("student")){
             username = ConfigurationReader.get("student_username");
             password = ConfigurationReader.get("student_password");
-        }else if(role.equals("student2")){
+        }else if(user.equals("student2")){
             username = ConfigurationReader.get("student2_username");
             password = ConfigurationReader.get("student2_password");
-        }else if(role.equals("student3")){
+        }else if(user.equals("student3")){
             username = ConfigurationReader.get("student3_username");
             password = ConfigurationReader.get("student3_password");
-        }else if(role.equals("librarian")){
+        }else if(user.equals("librarian")){
             username = ConfigurationReader.get("librarian_username");
             password = ConfigurationReader.get("librarian_password");
         }
-        LoginPage loginPage = new LoginPage();
-        loginPage.userName.sendKeys(username);
-        loginPage.passWord.sendKeys(password + Keys.ENTER);
-        BrowserUtils.waitFor(1);
+        new LoginPage().login(username,password);
 
     }
 
-    @Then("user on {string}")
-    public void user_on(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("user should be able to see {string}")
+    public void user_should_be_able_to_see(String title) {
+        BrowserUtils.waitFor(3);
+        Assert.assertTrue(Driver.get().getCurrentUrl().contains(title));
+        System.out.println(Driver.get().getCurrentUrl());
+    }
+    @When("user logs out")
+    public void user_logs_out() {
+        LoginPage loginPage= new LoginPage();
+        loginPage.logout();
     }
 
+    @Then("the current url should be {string}")
+    public void the_current_url_should_be(String url) {
+       Assert.assertEquals(url,Driver.get().getCurrentUrl());
+    }
 }

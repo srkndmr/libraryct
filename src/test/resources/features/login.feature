@@ -1,12 +1,8 @@
 Feature: Authorized user should be able to login
 
-  @wip
-  Scenario Outline: Login with different users
-    When the user logs in as "<role>"
-    Then user on "<page>"
-    Examples:
-      | role      | page            |
-      | student   | books |
-      | student2  | books |
-      | student3  | books |
-      | librarian | Dashboard       |
+
+  Scenario: Login with different users
+    Given user is on the login page
+    When "librarian" enters valid credentials
+    Then user should be able to see "dashboard"
+#librarian : dashboard, student-student2-student3 : books
