@@ -7,11 +7,11 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"json:target/cucumber.json",
                 "html:target/default-html-reports",
-                "rerun:target/rerun.txt"},
+                "rerun:target/rerun.txt"}  ,
         features = "src/test/resources/features",
         glue = "com/libraryct/stepdefinitions",
-        dryRun = true,
-        tags = "@192"
+        dryRun = false,
+        tags = "@wip"
 )
 
 public class CukesRunner {

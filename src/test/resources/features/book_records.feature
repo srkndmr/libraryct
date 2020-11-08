@@ -1,13 +1,11 @@
 Feature: Mehmet - Librarian user can see book records on user page.
 
-	#As a librarian, I should be able to see book records on user page.
-  @192 @EUG15-188
+  @EUG15-192 @EUG15-188
+    @wip
 
-  Background :
+  Scenario Outline: Librarian book records feature try for <count>
     Given user is on the login page
-    And  "librarian" enters valid credentials
-
-  Scenario Outline: Librarian book records feature
+    Then "librarian" enters valid credentials
     When the user navigate to  Users page
     Then As default 10 records
     And Show records for <count> options
@@ -18,6 +16,12 @@ Feature: Mehmet - Librarian user can see book records on user page.
       | 15    |
       | 50    |
       | 100   |
+      | 200   |
+
+    # first two steps is coming from LoginStepDefs which written by Nurullah abi
+    # third steps method needs a webelement which i located in LoginPage -Users Page Link-
+
+
 
 
 
