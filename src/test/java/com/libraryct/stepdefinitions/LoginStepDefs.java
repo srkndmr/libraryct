@@ -52,6 +52,60 @@ public class LoginStepDefs {
 
     @Then("the current url should be {string}")
     public void the_current_url_should_be(String url) {
-       Assert.assertEquals(url,Driver.get().getCurrentUrl());
+        Assert.assertEquals(url,Driver.get().getCurrentUrl());
     }
+
+    @When("the User login as {string}")
+    public void the_User_login_as(String user) {
+        String username = null;
+        String password = null;
+
+        if(user.equals("student")){
+            username = ConfigurationReader.get("student_username");
+            password = ConfigurationReader.get("student_password");
+        }else if(user.equals("student2")){
+            username = ConfigurationReader.get("student2_username");
+            password = ConfigurationReader.get("student2_password");
+        }else if(user.equals("student3")){
+            username = ConfigurationReader.get("student3_username");
+            password = ConfigurationReader.get("student3_password");
+        }else if(user.equals("librarian")){
+            username = ConfigurationReader.get("librarian_username");
+            password = ConfigurationReader.get("librarian_password");
+        }else if (user.equals("noMailWithPass ")){
+            username = "";
+            password = "abc123";
+        }else if (user.equals("validMailWithPass")){
+            username = "azerefem@gmail.com";
+            password = "abc123";
+        }else if (user.equals("validMailNoPass")){
+            username = "azerefem@gmail.com";
+            password = "";
+        }else if (user.equals("inValidMailWithPass")){
+            username = "azerAgmail.com";
+            password = "abc123";
+        }else if (user.equals("inValidMailNoPass")){
+            username = "azerAgmail.com";
+            password = "";
+        }
+        new LoginPage().login(username,password);
+    }
+
+    @Then("the User lands on {string}")
+    public void the_User_lands_on(String landingPage) {
+        BrowserUtils.waitFor(3);
+        Assert.assertTrue(Driver.get().getCurrentUrl().contains(landingPage));
+        System.out.println(Driver.get().getCurrentUrl());
+    }
+
+    @Then("the User should see the error {string}")
+    public void the_User_should_see_the_error(String errorMessage) {
+        BrowserUtils.waitFor(3);
+        String actualErrorMessage = new LoginPage().errorMessage.getText();
+        Assert.assertEquals("verify error",errorMessage,actualErrorMessage);
+
+    }
+
+
+
 }
