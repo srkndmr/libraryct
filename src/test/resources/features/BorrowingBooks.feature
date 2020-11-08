@@ -1,6 +1,6 @@
 Feature: As a student, I should be able to see Borrowed Books Table
 
-  @EUG15-195 @EUG15-188 @wip
+  @EUG15-195 @EUG15-188
   Scenario: Students can see Borrowed Books Table Headers
     Given The student logged in
     And The student on Borrowing Books Page
