@@ -26,9 +26,11 @@ public class LoginPage {
     @FindBy(xpath = "//a[@class='dropdown-item']")
     public WebElement logout;
 
+    @FindBy(xpath = "//a[@ href = '#users']")
+    public WebElement Users;
+
     @FindBy(css = ".alert.alert-danger")
     public WebElement errorMessage;
-
 
     public void login(String username, String password) {
         userName.sendKeys(username);
