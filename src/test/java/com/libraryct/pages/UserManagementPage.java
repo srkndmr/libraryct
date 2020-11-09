@@ -29,6 +29,15 @@ public class UserManagementPage {
     @FindBy (xpath = "//*[.='Close']")
     public WebElement closeButton;
 
+    @FindBy (xpath = "//*[.='Edit User Information']")
+    public WebElement editPageTitle;
+
+    @FindBy (xpath = "//*[.='Add User']")
+    public WebElement addUserPageTitle;
+
+
+
+
 
 
 
