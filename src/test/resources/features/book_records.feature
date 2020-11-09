@@ -1,7 +1,7 @@
 Feature: Mehmet - Librarian user can see book records on user page.
 
   @EUG15-192 @EUG15-188
-    @wip
+
 
   Scenario Outline: Librarian book records feature try for <count>
     Given user is on the login page

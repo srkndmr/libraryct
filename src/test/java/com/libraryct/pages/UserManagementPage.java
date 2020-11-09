@@ -23,6 +23,14 @@ public class UserManagementPage {
     @FindBy (xpath = "//*[@id=\"tbl_users\"]/tbody/tr[1]/td[1]/a")
     public WebElement editUserButton;
 
+    @FindBy (xpath = "//*[.='Save changes']")
+    public WebElement saveChangesButton;
+
+    @FindBy (xpath = "//*[.='Close']")
+    public WebElement closeButton;
+
+
+
 
 
 
