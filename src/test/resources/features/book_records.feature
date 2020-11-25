@@ -6,7 +6,7 @@ Feature: Mehmet - Librarian user can see book records on user page.
   Scenario Outline: Librarian book records feature try for <count>
     Given user is on the login page
     Then "librarian" enters valid credentials
-    When the user navigate to  Users page
+    When the user navigate to  <Users> page
     Then As default 10 records
     And Show records for <count> options
     Examples:

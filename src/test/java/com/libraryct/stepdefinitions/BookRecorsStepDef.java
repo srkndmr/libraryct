@@ -36,6 +36,9 @@ public class BookRecorsStepDef {
         String message = "Showing 1 to "+value+" of";  // i changed the assertion expected text to dynamic for each option
         Assert.assertTrue("option number needs to be in the text",userManagementPage.recordsInfoText.getText().contains(message));
 
+
+
+
     }
 
 
