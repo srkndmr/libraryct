@@ -12,7 +12,8 @@ Feature: Authorized user should be able to login
 
     When the User login as "<role>"
     Then the User lands on "<page>"
-    Yeniiii
+
+    Eski
 
     Examples:
       |        role         |   page    |
